@@ -24,6 +24,7 @@ The purpose of the repository is to help beginners learn and plan their first me
 **Dry lab and wet lab workflows**
 **Examples**
 **Resources and tools**
+
 ## Who is this for?
 -	Students exploring microbiology, genomics, bioinformatics, epidemiology
 -	Researchers entering the field of metagenomics
