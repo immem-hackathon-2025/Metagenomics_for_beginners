@@ -1,100 +1,61 @@
-**Metagenomics for Beginners**
+**Before you start sequencing**
 
-Metagenomics is the study of genetic material directly from environmental samples without the need to grow organisms in the lab. By sequencing all DNA or RNA in a sample, metagenomics allows us to see the entire community of microbes (bacteria, viruses, fungi, parasites) and understand their roles in health, disease and the environment.
+In our experience, there is a lot to be gained from spending a bit of time on clarifying your goals. Why do you want to do metagenomic sequencing? What are you hoping to achieve?
 
-**Why is metagenomics important / What can metagenomics show us?**
+**What is your research question?**
 
-What microbes are present in a sample?
-(water, soil, animal gut, human respiratory tract)
-How do microbial communities change over time or under stress?
-(after therapeutic treatment, during infection outbreaks, or in polluted environments)
-Are there pathogens that could spill over from animals to humans?
-(key to the One Health approach, which links human, animal, and environmental health)
-What genes are microbes carrying?
-(antimicrobial resistance genes, virulence factors, metabolic capabilities)
-How do microbes interact with each other and with their host?
-(protective roles of gut microbiota vs. harmful effects of dysbiosis)
+A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable (expectation management).
+For example, "We want to do AMR surveillance in wastewater" is an admirable goal, but from a metagenomic analysis perspective, it is not sufficiently specific. Are you interested in monitoring changes in particular resistance genes, linking genes to hosts, or discovering new variants? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools (for example whether k-mer based classifiers are sufficient, or if you will need sensitive protein-level searches with DIAMOND or MMseqs2).
 
-**Metagenomics in One Health / public health context**
-Tracking emerging and reemerging pathogens (detecting viruses, bacteria, fungi and parasites in wildlife, livestock, environment and humans before outbreaks spread).
-Antimicrobial resistance surveillance (identifying resistance genes in hospitals, farms and wastewater).
-Food and water safety (monitoring contamination, safe consumption).
-Environmental health (measuring the impact of pollution, climate change and land use on microbial ecosystems)???
-Microbiome and health (understanding how microbial communities affect immunity, nutrition, and disease risk).
- 
-## What you will find here?
-The purpose of the repository is to help beginners learn and plan their first metagenomics project.
+**Experimental design**
 
-**Guides**
+How many samples will you need and across what time points or environments? Consider biological replicates, technical replicates and potential confounders such as seasonality, diet, geography or sample matrix/composition. Proper design here reduces the risk of ambiguous downstream results. This is not specific to metagenomics, but just a general reminder.
 
-**Dry lab and wet lab workflows**
+**Controls and contamination**
 
-**Examples**
+Metagenomics is untargeted and therefore highly sensitive to contamination. You can assume some level of background DNA will be introduced from your reagents often called the “kitome”, a characteristic set of bacterial sequences commonly originating from DNA extraction or library prep kits (e.g., Ralstonia, Burkholderia, Sphingomonas). The only way to distinguish real biology from kitome noise is to include controls:
+-	Negative controls (field blanks, extraction blanks, library blanks) help you identify contaminants.
+-	Positive controls (mock communities, spike-ins) let you measure sensitivity, abundance bias, and quantification accuracy.
+-	Replicates strengthen your conclusions and allow you to gauge technical variation. 
+If you are doing metagenomics for diagnostic or surveillance purposes, controls are quite important and missing them cannot be fixed afterwards.
 
-**Resources and tools**
+**Sample preparation**
 
-## Who is this for?
--	Students exploring microbiology, genomics, bioinformatics, epidemiology
--	Researchers entering the field of metagenomics
--	Public/animal health professionals interested in microbial genomics 
--	Anyone curious about the exiting (invisible) world of microbes
+This is a step which in our opinion is highly underestimated. If you have a specific target you may need enrichment or depletion steps (host DNA removal, rRNA depletion). On the other hand, if you want quantitative data, you should minimize manipulations and record exact volumes or weights. Spike-ins are useful for transforming relative read counts into absolute abundance estimates. If working with viruses (which can be RNA and DNA), you have to make sure you reverse transcribe RNA and synthesize double-stranded DNA before sequencing (unless you are only interested in RNA viruses in which case you can consider doing RNA-seq). 
 
-**Learning objectives/outcomes (each module can be a folder in the repo with a tutorial, data, example checklist etc…**
+**Sequencing strategy**
+Your sequencing choice depends on your goals. Illumina short reads are ideal for accurate taxonomic surveys and gene profiling; long reads (Oxford Nanopore, PacBio) are useful for resolving genomes, plasmids, and viral populations. You should also think about sequencing depth: do you need shallow coverage to survey broad community shifts, or deep coverage to assemble novel genomes? This will later influence which databases and search methods you rely on.
 
-Module 1: Introduction to metagenomics (including pros and cons)
+**Downstream analysis planning**
+Even before sequencing, it is wise to think about the databases and tools you will use. K-mer based tools (Kraken2, Kaiju, Centrifuge, custom databases) are fast and efficient for initial classification against nucleotide databases. However, when reads or contigs cannot be classified, sensitive protein-level searches (DIAMOND, MMseqs2) against comprehensive protein databases (NR, UniRef, eggNOG, KEGG, custom databases) can reveal more distant relationships. BLAST is also critical in resolving conflicting classifications. Combining these approaches makes sense when you want both speed and sensitivity: use k-mer classifiers for the first pass, protein alignment tools for unclassified or novel sequences and BLAST for confirmation.
 
-You will be able to:
-- Define metagenomics and distinguish shotgun vs. amplicon approaches.
-- Explain strengths/limitations (biases, depth, cost, turnaround).
-- Map metagenomics applications to One Health/public health questions.
+**Practical considerations**
+Finally, consider the logistics:
+-	Ethics and permits (Nagoya protocol, animal/human approvals, biosafety).
+-	Metadata (sample IDs, time, location, host, storage conditions).
+-	Compute requirements (disk space, CPU/RAM, workflow management with Nextflow or Snakemake).
+-	Data sharing (SRA/ENA submission, naming conventions, README files).
+-	Contingency planning (what if yields are low, host DNA dominates, or contamination is high?).
 
-Module 2: Study design and sample types
+**Quality control and trimming**
+Before you start asking “what’s in my sample?”, it is essential to check the quality of your raw sequencing data. Sequencing machines produce large volumes of reads, but not all of them are equally reliable. Poor-quality bases, adapter sequences, artifacts and primers can introduce false positives or reduce sensitivity if not handled properly.
 
-You will be able to:
-- Match research questions to sample types (soil, water, swabs, feces, vectors, air).
-- Plan sampling strategy (replicates, controls, blanks, time series).
-- Specify essential metadata (where/when/host/exposure/processing).
+**First check: raw read quality**
+Tools like FastQC or fastp provide an overview of your sequencing run. Typical things to look at include:
+-	Per-base quality scores: usually high at the beginning of reads but declining towards the end.
+-	Adapter content: leftover sequences from library preparation that should be removed.
+-	GC content: unusually skewed profiles may indicate contamination.
+-	Overrepresented sequences: can reveal primers, adapters, or strong contaminants.
+Running MultiQC afterwards is a convenient way to aggregate FastQC reports across all your samples.
 
-Module 3: Sample preparation and nucleic acid quality assessment
+**Trimming and filtering**
 
-You will be able to:
-- Describe extraction basics for DNA/RNA; avoid common inhibitors.
-- Assess yield/integrity/purity (Qubit, NanoDrop, RIN/DIN).
-- Decide when to enrich/deplete (host depletion, rRNA depletion).
+Once you know the quality profile, you can trim or filter reads. The goal is to keep as much useful data as possible while discarding unreliable bases. Common steps include:
+-	Adapter removal: to prevent spurious matches in downstream analysis.
+-	Quality trimming: removing low-quality bases from read ends (e.g., Q < 20).
+-	Length filtering: discarding very short reads after trimming, since they rarely classify reliably.
+-	Poly-G/poly-A tail removal: especially relevant for Illumina NovaSeq and Nanopore reads.
+Popular tools here include Trim Galore, Trimmomatic, and fastp (which combines QC reporting and trimming in one step).
 
-Module 3a: Sample preparation per microbe type (probably 3 and 3a will be merged into one, or we can have separate files for bits and pieces/nuances for different samples/microbes
-
-You will be able to:
-- Contrast extraction/enrichment strategies per microbe class (e.g., capsid-protected viral nucleic acids, tough fungal cell walls).
-- Choose targeted vs. untargeted approaches when one group is low abundance.
-- Recognize biosafety and contamination-control considerations per sample type.
-
-Module 4: Sequencing technologies
-
-You will be able to:
-- Compare Illumina, ONT, and PacBio for metagenomics (read length, error, cost).
-- Select depth/coverage for your objective (profiling vs. assembly).
-- Plan multiplexing and barcoding strategies.
-
-Module 5: Library preparation and library quality assessment 
-
-You will be able to:
--Outline library prep steps (fragmentation, adapters, indexing).
--Interpret library QC (size distributions, molarity, contamination).
--Identify failure modes and corrective actions.
-
-Module 6: Sequence data quality control 
-
-Module 7: Taxonomic profiling 
-
-Module 8: Assembly and binning
-
-Module 9: Functional profiling
-
-Module 10: Antimicrobial resistance and virulence genes
-
-Modules 11: Visualization and interpretation
-
-Module 12: Reproducibility and reporting
-Module 13: Hardware specs, clusters, online platforms
-Maybe include a tutorial pipeline (with a well curated dataset, replicating the results from the study and explaining the output)
+**Why it matters**
+Skipping QC and trimming can result in misleading outcomes. For example, adapters may artificially inflate the number of “unclassified” reads, and low-quality bases can cause false alignments in k-mer or protein searches. Trimming improves mapping rates, taxonomic assignment and assembly quality.
