@@ -51,30 +51,30 @@ You will be able to:
 Module 2: Study design and sample types
 
 You will be able to:
--Match research questions to sample types (soil, water, swabs, feces, vectors, air).
--Plan sampling strategy (replicates, controls, blanks, time series).
--Specify essential metadata (where/when/host/exposure/processing).
+- Match research questions to sample types (soil, water, swabs, feces, vectors, air).
+- Plan sampling strategy (replicates, controls, blanks, time series).
+- Specify essential metadata (where/when/host/exposure/processing).
 
 Module 3: Sample preparation and nucleic acid quality assessment
 
 You will be able to:
--Describe extraction basics for DNA/RNA; avoid common inhibitors.
--Assess yield/integrity/purity (Qubit, NanoDrop, RIN/DIN).
--Decide when to enrich/deplete (host depletion, rRNA depletion).
+- Describe extraction basics for DNA/RNA; avoid common inhibitors.
+- Assess yield/integrity/purity (Qubit, NanoDrop, RIN/DIN).
+- Decide when to enrich/deplete (host depletion, rRNA depletion).
 
 Module 3a: Sample preparation per microbe type (probably 3 and 3a will be merged into one, or we can have separate files for bits and pieces/nuances for different samples/microbes
 
 You will be able to:
--Contrast extraction/enrichment strategies per microbe class (e.g., capsid-protected viral nucleic acids, tough fungal cell walls).
--Choose targeted vs. untargeted approaches when one group is low abundance.
--Recognize biosafety and contamination-control considerations per sample type.
+- Contrast extraction/enrichment strategies per microbe class (e.g., capsid-protected viral nucleic acids, tough fungal cell walls).
+- Choose targeted vs. untargeted approaches when one group is low abundance.
+- Recognize biosafety and contamination-control considerations per sample type.
 
 Module 4: Sequencing technologies
 
 You will be able to:
--Compare Illumina, ONT, and PacBio for metagenomics (read length, error, cost).
--Select depth/coverage for your objective (profiling vs. assembly).
--Plan multiplexing and barcoding strategies.
+- Compare Illumina, ONT, and PacBio for metagenomics (read length, error, cost).
+- Select depth/coverage for your objective (profiling vs. assembly).
+- Plan multiplexing and barcoding strategies.
 
 Module 5: Library preparation and library quality assessment 
 
