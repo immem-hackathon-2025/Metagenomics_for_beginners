@@ -43,15 +43,45 @@ The purpose of the repository is to help beginners learn and plan their first me
 
 Module 1: Introduction to metagenomics (including pros and cons)
 
+You will be able to:
+- Define metagenomics and distinguish shotgun vs. amplicon approaches.
+- Explain strengths/limitations (biases, depth, cost, turnaround).
+- Map metagenomics applications to One Health/public health questions.
+
 Module 2: Study design and sample types
+
+You will be able to:
+-Match research questions to sample types (soil, water, swabs, feces, vectors, air).
+-Plan sampling strategy (replicates, controls, blanks, time series).
+-Specify essential metadata (where/when/host/exposure/processing).
 
 Module 3: Sample preparation and nucleic acid quality assessment
 
-Module 3a: Sample preparation per microbe type???
+You will be able to:
+-Describe extraction basics for DNA/RNA; avoid common inhibitors.
+-Assess yield/integrity/purity (Qubit, NanoDrop, RIN/DIN).
+-Decide when to enrich/deplete (host depletion, rRNA depletion).
+
+Module 3a: Sample preparation per microbe type (probably 3 and 3a will be merged into one, or we can have separate files for bits and pieces/nuances for different samples/microbes
+
+You will be able to:
+-Contrast extraction/enrichment strategies per microbe class (e.g., capsid-protected viral nucleic acids, tough fungal cell walls).
+-Choose targeted vs. untargeted approaches when one group is low abundance.
+-Recognize biosafety and contamination-control considerations per sample type.
 
 Module 4: Sequencing technologies
 
+You will be able to:
+-Compare Illumina, ONT, and PacBio for metagenomics (read length, error, cost).
+-Select depth/coverage for your objective (profiling vs. assembly).
+-Plan multiplexing and barcoding strategies.
+
 Module 5: Library preparation and library quality assessment 
+
+You will be able to:
+-Outline library prep steps (fragmentation, adapters, indexing).
+-Interpret library QC (size distributions, molarity, contamination).
+-Identify failure modes and corrective actions.
 
 Module 6: Sequence data quality control 
 
