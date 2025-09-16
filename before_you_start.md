@@ -1,12 +1,15 @@
 **Before you start sequencing**
 
-In our experience, there is a lot to be gained from spending a bit of time on clarifying your goals. Why do you want to do metagenomic sequencing? What are you hoping to achieve?
+In our experience, there is a lot to be gained from spending a bit of time on clarifying your goals. Why do you want to do metagenomic sequencing? What are you hoping to achieve? Your sample collection, preparation and sequencing strategy should be aligned to your goals, to maximize your chances of success. 
+
+Here, we outline some points which we have learned are important to consider.
 
 **What is your research question?**
 
 A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable.
 
-For example, "We want to do AMR surveillance in wastewater" is an admirable goal, but from a metagenomic analysis perspective, it is not sufficiently specific. Are you interested in monitoring changes in particular resistance genes, linking genes to hosts, or discovering new variants? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools (for example whether k-mer based classifiers are sufficient, or if you will need sensitive protein-level searches with DIAMOND or MMseqs2).
+Case 1 "We want to do AMR surveillance in wastewater". 
+There has been a lot of studies doing shotgun metagenomics on wastewater, and one things is very clear: its an incredibly complex matrix. If you simply sequence everything, chances are you will only detect a few highly abundant AMRs, while most of your data will be something else. Are you interested in monitoring changes in particular resistance genes, linking genes to hosts, or discovering new variants? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools.  
 
 **Experimental design**
 
