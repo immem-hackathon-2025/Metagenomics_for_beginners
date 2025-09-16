@@ -1,13 +1,12 @@
 **General worflows**
 
-***1. Do QC, and trimming***
+***1. QC & Trimming***
 
-1.1. General fastq data quality metrics: FastQC
+1.1. Fastq quality overview 
 
-1.2. Adapter trimming: trimmomatic
+1.2. Adapter and quality trimming
 
-
-***2. Host DNA Contaminant removal***
+***2. Host & rRNA D***
 
 2.1. Align reads to the host reference sequence (hg38): bowtie2 or any other sensitive aligners
 
@@ -39,7 +38,8 @@
 - Dereplication
 
 4.5. Gene annotation & Functional profiling
-
+- ORF prediction: prodigal
+- Align ORFs to database (Uniref90, KEGG...): MMseqs2, DIAMOND
 4.6. Taxonomic classification of MAGs
 - Align MAGs with taxonomy database:
   - Phylogenetic placement + ANI: GTDB-tk
