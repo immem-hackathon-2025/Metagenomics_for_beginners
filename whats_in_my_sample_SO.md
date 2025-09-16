@@ -60,5 +60,5 @@ So you should know the details about your database
 Besides the enrichment at the sample preparation step, host read removal of low biomass samples significantly decreases the amount of reads remaining for the downstream analysis. Thus, MAG assembly sometimes cannot be the case to find what is in the sample. 
 In that case, we propose sticking to the taxonomic composition estimated by the assembly-free methods, probably kmer-base methods. 
 But add the additional decontamination steps to rule out the false-positive species. It could be done in multiple ways:
-	- Negative controls (blanks)
-	- Other sample data, processed with exact same laboratory experiments, but expected to have the distinct composition (e.g., tissue vs. blood)
+- Negative controls (blanks)
+- Other sample data, processed with exact same laboratory experiments, but expected to have the distinct composition (e.g., tissue vs. blood)
