@@ -8,21 +8,39 @@ Here, we outline some points which we have learned are important to consider.
 
 A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable.
 
-_Case 1 "We want to do AMR surveillance in wastewater"._
-_There has been a lot of studies doing shotgun metagenomics on wastewater, and one things is very clear: its an incredibly complex matrix! If you simply sequence everything, chances are you will only detect a few highly abundant AMRs, while most of your data will be something else. You will have a greater chance of success if you can narrow down your research question to something more specific. Is this what you are after? Or are you actually interested in monitoring changes in particular resistance genes? Is it important to link genes to hosts? Are you aiming to detect novel AMRs? Do you need to be quantitative about your results? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools. For many of these questions, you should consider doing an enrichment or depletion protocol on your samples before sequencing them._
+_**Case 1** "Finding a needle in a very large haystack"._
+
+_Many natural environments are naturally super complex. Therefore, the first question you need to clarify would be whether its important to get a generel overview of the composition of sample, or if you are actually just interested in a specific component of the sample. If you simply sequence everything (in the hope of looking at everything), you will only find the most abundant members of the community targeted._ 
+
+_An example of a complex environment that is currently of high interest for pathogen surveillance is wastewater. Wastewater samples can be used for surveillance of many different types of surveillance, but many of the attractive targets are present at low relative abundance. If your interest in wastewater is surveillance of a specific class of AMR genes, you should consider enriching for them during sample preparation. Is it important to link genes to hosts? Then you may want to do long-read sequencing, and you will need to consider how not to fragment your sample during DNA extraction. Do you need to be quantitative about your results? Then you might consider using synthetic spike-ins, and you will have to take very detailed measurements during sample collection._
+
+_If you simply want to explore a new environment, thats of course fine too. Just remember that for complex samples, we only see the dominant members._
+
+_**Case 2** Sequencing the genomes of the uncultured majority._
+
+_Lots of bacteria are really hard to culture, others grow really slowly. Metagenomics has been successfully applied in such cases, but the success is highly dependent on sampling collection and sequencing strategy._
+
+_MAGs ("metagenome-assembled genomes") have provided important new insights to the microbial dark matter out there, and several excellent tools have been developed to generate MAGs directly from environmental samples (link to review). If you are used to work with assemblies from cultured isolates, there are a couple of things to be aware of. MAGs differ from regular genomes in several ways. First, note that MAGs are not complete genomes (regardless of what checkM says!). In general, you should assume that a MAG contains the core genes of the bacterium, but not the accessory genes. This is because genes that are variably present within and across samples are nearly impossible to bin. Second, note that MAGs are typically a kind of "consensus" genome, where data from multiple bacterial strains have been co-assembled. Keep in mind that it is not an isolate, but the genome is likely derived from a mix of strains (depending on the strain-level diversity in your sample(s)_
+
+_Sometimes, a sample of an uncultured bacterium can be obtained from an environment with low complexity. For example, a bacterial infection may be caused by a single isolate that spreads rapidly in an environment normally devoid of bacteria. If the sample comes from a human patient, you should consider whether depletion of human DNA should be part of the sample preparation. If you are able to obtain a relatively pure sample of your target organism, but in low quantity, you may be able to just amplify the sample before sequencing. For example, it is possible to do an untargeted PCR (multiple displacement amplification), which will ensure that you have enough DNA for sequencing._
+
+ 
 
 **Experimental design**
 
-How many samples will you need and across what time points or environments? Consider biological replicates, technical replicates and potential confounders.
+This is really just good scientific practice, but it seems that molecular biologists sometimes forget to take the time to consider whether the sampling collection strategy is aligned to the goals of the experiment. For metagenomic analysis, it is particularly important to consider biological replicates, technical replicates and potential confounders.
+
 Start by minimizing technical and procedural sources of bias at the design stage:
 - Randomize samples across preparation (extraction/library) batches and sequencing runs.
 - Use blocking so each analytical batch contains a balanced mix of study groups (e.g., case/control).
 - Keep detailed, structured metadata for kit lot, operator, run ID, and any deviations from SOPs.
 - When repeated measures exist (e.g., multiple sites per subject or longitudinal timepoints), distribute then across different preparation and sequencing batches.
+
 Control for confounding sample properties:
 - Baseline subject characteristics (e.g., oral metagenomes, where age, diet, oral hygeine, and periodontitis severity are influential)
 - Sampling environment (e.g., seasonality and geography)
-Proper design here reduces the risk of ambiguous downstream results. Perfectly matched cohorts are rare in practice, so prioritize (1) documenting these variables with standardized methods, (2) reducing extreme imbalance at enrollment or sampling (simple stratification or frequency matching), and (3) including key variables as covariates in the statistical analysis. This is not specific to metagenomics, but just a general reminder. 
+
+Perfectly matched cohorts are rare in practice, so prioritize (1) documenting these variables with standardized methods, (2) reducing extreme imbalance at enrollment or sampling (simple stratification or frequency matching), and (3) including key variables as covariates in the statistical analysis. 
 
 **Controls and contamination**
 
