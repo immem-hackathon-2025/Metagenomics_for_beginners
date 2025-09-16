@@ -8,8 +8,8 @@ Here, we outline some points which we have learned are important to consider.
 
 A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable.
 
-Case 1 "We want to do AMR surveillance in wastewater". 
-There has been a lot of studies doing shotgun metagenomics on wastewater, and one things is very clear: its an incredibly complex matrix. If you simply sequence everything, chances are you will only detect a few highly abundant AMRs, while most of your data will be something else. Are you interested in monitoring changes in particular resistance genes, linking genes to hosts, or discovering new variants? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools.  
+_Case 1 "We want to do AMR surveillance in wastewater"._
+_There has been a lot of studies doing shotgun metagenomics on wastewater, and one things is very clear: its an incredibly complex matrix! If you simply sequence everything, chances are you will only detect a few highly abundant AMRs, while most of your data will be something else. You will have a greater chance of success if you can narrow down your research question to something more specific. Is this what you are after? Or are you actually interested in monitoring changes in particular resistance genes? Is it important to link genes to hosts? Are you aiming to detect novel AMRs? Do you need to be quantitative about your results? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools. For many of these questions, you should consider doing an enrichment or depletion protocol on your samples before sequencing them._
 
 **Experimental design**
 
