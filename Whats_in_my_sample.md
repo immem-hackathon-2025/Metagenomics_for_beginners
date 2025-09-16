@@ -2,7 +2,9 @@
 
 There are thousands of questions you may ask, where metagenomics could be of interest. One of the most basic ones is perhaps "whats in my sample?" Here, we will outline some strategies for how you can go about that questions, and some of the tools out there which can help you find some answers. We will of course also mention some common pitfalls, and situations where you need to be cautious.
 
-## First of all, check the quality of your data!
+## Before you start analysing: QC check the raw data!
+
+Did the sequencing work as intended? How much data did you get, and whats the quality of it? The quality (and amount) of data you get from your sequencing matters a lot for what you can do with your data in terms of analysis. Sometimes, everything is great, other times you may need to trim your data.
 
 ## Getting a first overview
 
