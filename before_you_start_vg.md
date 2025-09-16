@@ -4,7 +4,8 @@ In our experience, there is a lot to be gained from spending a bit of time on cl
 
 **What is your research question?**
 
-A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable (expectation management).
+A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable.
+
 For example, "We want to do AMR surveillance in wastewater" is an admirable goal, but from a metagenomic analysis perspective, it is not sufficiently specific. Are you interested in monitoring changes in particular resistance genes, linking genes to hosts, or discovering new variants? The answers to these questions will inform your sampling strategy, sequencing strategy and later, the choice of analytical tools (for example whether k-mer based classifiers are sufficient, or if you will need sensitive protein-level searches with DIAMOND or MMseqs2).
 
 **Experimental design**
@@ -37,25 +38,3 @@ Finally, consider the logistics:
 -	Data sharing (SRA/ENA submission, naming conventions, README files).
 -	Contingency planning (what if yields are low, host DNA dominates, or contamination is high?).
 
-**Quality control and trimming**
-Before you start asking “what’s in my sample?”, it is essential to check the quality of your raw sequencing data. Sequencing machines produce large volumes of reads, but not all of them are equally reliable. Poor-quality bases, adapter sequences, artifacts and primers can introduce false positives or reduce sensitivity if not handled properly.
-
-**First check: raw read quality**
-Tools like FastQC or fastp provide an overview of your sequencing run. Typical things to look at include:
--	Per-base quality scores: usually high at the beginning of reads but declining towards the end.
--	Adapter content: leftover sequences from library preparation that should be removed.
--	GC content: unusually skewed profiles may indicate contamination.
--	Overrepresented sequences: can reveal primers, adapters, or strong contaminants.
-Running MultiQC afterwards is a convenient way to aggregate FastQC reports across all your samples.
-
-**Trimming and filtering**
-
-Once you know the quality profile, you can trim or filter reads. The goal is to keep as much useful data as possible while discarding unreliable bases. Common steps include:
--	Adapter removal: to prevent spurious matches in downstream analysis.
--	Quality trimming: removing low-quality bases from read ends (e.g., Q < 20).
--	Length filtering: discarding very short reads after trimming, since they rarely classify reliably.
--	Poly-G/poly-A tail removal: especially relevant for Illumina NovaSeq and Nanopore reads.
-Popular tools here include Trim Galore, Trimmomatic, and fastp (which combines QC reporting and trimming in one step).
-
-**Why it matters**
-Skipping QC and trimming can result in misleading outcomes. For example, adapters may artificially inflate the number of “unclassified” reads, and low-quality bases can cause false alignments in k-mer or protein searches. Trimming improves mapping rates, taxonomic assignment and assembly quality.
