@@ -1,10 +1,10 @@
-**Before you start sequencing**
+# **Before you start sequencing**
 
 In our experience, there is a lot to be gained from spending a bit of time on clarifying your goals. Why do you want to do metagenomic sequencing? What are you hoping to achieve? Your sample collection, preparation and sequencing strategy should be aligned to your goals, to maximize your chances of success. 
 
 Here, we outline some points which we have learned are important to consider.
 
-**What is your research question?**
+# **What is your research question?**
 
 A common pitfall in metagenomics is to send off your samples without a clear plan. If you reached the point where you want to do metagenomic sequencing, there is a reason for it. Writing down specific aims may help clarify if your dreams are of the wild kind, or actually achievable.
 
@@ -26,7 +26,7 @@ _MAGs ("metagenome-assembled genomes") can be generated directly from environmen
 
 _Sometimes, a sample of an uncultured bacterium can be obtained from an environment with low complexity. For example, a bacterial infection may be caused by a single isolate that spreads rapidly in an environment normally devoid of bacteria. If your sample comes from an infection, your main problem is likely to be the host DNA. If the host is a human, there are a lot of kits and protocols available. They tend to sound better in the brochure than in real life, but they do work (at least sometimes). On the other hand, if you are able to obtain a relatively pure sample of your target organism, but in low quantity, it is possible to amplify the sample before sequencing._
 
-**Experimental design**
+# **Experimental design**
 
 Thinking about how to conduct your experiment is of course not special for metagenomics, but there are perhaps some specific sources of bias and confounders that should pay extra attention to.
 
@@ -42,7 +42,7 @@ Control for confounding sample properties:
 
 Perfectly matched cohorts are rare in practice, so prioritize (1) documenting these variables with standardized methods, (2) reducing extreme imbalance at enrollment or sampling (simple stratification or frequency matching), and (3) including key variables as covariates in the statistical analysis. 
 
-**Controls and contamination**
+# **Controls and contamination**
 
 Metagenomics, especailly low biomass sample, is untargeted and therefore highly sensitive to contamination. You can assume some level of background DNA will be introduced from your reagents often called the “kitome”, a characteristic set of bacterial sequences commonly originating from DNA extraction or library prep kits (e.g., Ralstonia, Burkholderia, Sphingomonas). Contiminants can also be introduced from laboratory environments. The only way to distinguish real biology from contiminant noise is to include controls:
 
@@ -52,7 +52,7 @@ Metagenomics, especailly low biomass sample, is untargeted and therefore highly 
 
 If you are doing metagenomics for diagnostic or surveillance purposes, controls are critically important - and missing them cannot be fixed afterwards.
 
-**Sample collection**
+# **Sample collection**
 
 Reproducibility begins with a SOP covering who collects, where, when, and how. 
 
@@ -60,7 +60,7 @@ For clinical collections, specify anatomical site, swabbing strokes, pre-collect
 For environmental sampling, define surface area, contact time, and aspectic handling.
 Immediately stabilize samples with a validated stabilization buffer or store at -80 °C as soon as possible to preserve the metagenomes at the time of collection.
 
-**Sample preparation**
+# **Sample preparation**
 
 This is a step which in our opinion is highly underestimated. Your protocol for sample preparation should be aligned to your research question (which should therefore be as precise as possible).
 
@@ -72,17 +72,17 @@ If working with viruses (which can be RNA and DNA), you have to make sure you re
 
 Keep extraction kit lots consistent within a study where possible; if a lot change is unavoidable, distribute groups across lots.
 
-**Sequencing strategy**
+# **Sequencing strategy**
 
 Your sequencing choice depends on your goals. Illumina short reads are ideal for accurate taxonomic surveys and gene profiling; long reads (Oxford Nanopore, PacBio) are useful for resolving genomes, plasmid/AMR context, and viral populations. 
 
 You should also think about sequencing depth: do you need shallow coverage to survey broad community shifts, or deep coverage to assemble novel genomes? This will later influence which databases and search methods you rely on. Regardless of platform, plan pilot runs to assess depth vs. diversity saturation and verify that negtaive controls remain low and distinct from biological samples.
 
-**Downstream analysis planning**
+# **Downstream analysis planning**
 
 Even before sequencing, it is wise to think about the databases and tools you will use. K-mer based tools (Kraken2, Kaiju, Centrifuge, custom databases) are fast and efficient for initial classification against nucleotide databases. However, when reads or contigs cannot be classified, sensitive protein-level searches (DIAMOND, MMseqs2) against comprehensive protein databases (NR, UniRef, eggNOG, KEGG, custom databases) can reveal more distant relationships. BLAST is also critical in resolving conflicting classifications. Combining these approaches makes sense when you want both speed and sensitivity: use k-mer classifiers for the first pass, protein alignment tools for unclassified or novel sequences and BLAST for confirmation.
 
-**Practical considerations**
+# **Practical considerations**
 Finally, consider the logistics:
 -	Ethics and permits (Nagoya protocol, animal/human approvals, biosafety).
 -	Metadata (sample IDs, time, location, host, storage conditions).
